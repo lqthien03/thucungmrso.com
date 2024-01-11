@@ -5,7 +5,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\SearchController;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\ProductController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -43,4 +43,5 @@ Route::get('category2/{id}', [PageController::class, 'category2']);
 Route::post('/add-to-cart/{id}', [CartController::class, 'addToCart'])->middleware(['auth', 'verified'])->name('cart.add');
 
 
-Route::get('cart', [CartController::class, 'index'])->middleware(['auth', 'verified'])->name('cart');;
+Route::get('cart', [CartController::class, 'index'])->middleware(['auth', 'verified'])->name('cart');
+Route::get('{link}', [ProductController::class, 'detail']);

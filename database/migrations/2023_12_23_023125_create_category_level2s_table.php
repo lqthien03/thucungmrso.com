@@ -11,14 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('category_2s', function (Blueprint $table) {
+        Schema::create('category_level2s', function (Blueprint $table) {
             $table->id();
             $table->string('tittle');
             $table->string('link');
-            $table->text('description');
-            $table->unsignedBigInteger('category_1_id');
-            $table->timestamps();
-            $table->foreign('category_1_id')->references('id')->on('category_1s')->onDelete('cascade');
+            $table->text('describe');
+            $table->boolean('display');
+            $table->boolean('outstand');
+            $table->foreignId('category_level1_id')->nullable()->constrained('category_level1s')->cascadeOnDelete();
+            $table->foreignId('seo_id')->nullable()->constrained('seos')->cascadeOnDelete();
         });
     }
 
@@ -27,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('category_2');
+        Schema::dropIfExists('category_level2s');
     }
 };

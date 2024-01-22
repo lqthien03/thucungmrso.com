@@ -13,7 +13,7 @@ class category_1 extends Seeder
     public function run(): void
     {
             // Tạo danh sách các danh mục cấp 1
-            $category_1 = [
+            $category_level1 = [
                 ['tittle' => 'SHOP CHO GÀ','link' => 'shop-cho-ga', 'description' => 'bán đồ ăn, phụ kiện cho gà'],
                 ['tittle' => 'SHOP CHO CHÓ','link' => 'shop-cho-cho', 'description' => 'bán đồ ăn, phụ kiện cho chó'],
                 ['tittle' => 'SHOP CHO MÈO','link' => 'shop-cho-meo', 'description' => 'bán đồ ăn, phụ kiện cho mèo'],
@@ -22,8 +22,8 @@ class category_1 extends Seeder
                 ['tittle' => 'SẢN PHẨM LÚA GẠO','link' => 'san-pham-lua-gao', 'description' => 'bán sản phẩm lúa gạo các loại'],
                 // Thêm các danh mục khác nếu cần
             ];
-    
+
             // Thêm dữ liệu vào bảng categories
-            DB::table('category_1s')->insert($category_1);
+            DB::table('category_level1s')->insert($category_level1);
     }
 }

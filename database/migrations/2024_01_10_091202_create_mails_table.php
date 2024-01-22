@@ -11,11 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('category_1s', function (Blueprint $table) {
+        Schema::create('mails', function (Blueprint $table) {
             $table->id();
-            $table->string('tittle');
-            $table->string('link');
-            $table->text('description');
+            $table->string('name');
+            $table->string('phone');
+            $table->string('email');
+            $table->string('address');
+            $table->string('topic');
+            $table->string('content');
+            $table->string('note');
             $table->timestamps();
         });
     }
@@ -25,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('category_1');
+        Schema::dropIfExists('mails');
     }
 };

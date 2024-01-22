@@ -11,14 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('blogs', function (Blueprint $table) {
+        Schema::create('category_level1s', function (Blueprint $table) {
             $table->id();
-            $table->string('image');
             $table->string('tittle');
             $table->string('link');
-            $table->string('describe',1000);
-            $table->string('content',10000);
-            $table->timestamps();
+            $table->text('describe');
+            $table->boolean('display');
+            $table->boolean('outstand');
+            $table->foreignId('seo_id')->nullable()->constrained('seos')->cascadeOnDelete();
         });
     }
 
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('category_level1s');
     }
 };

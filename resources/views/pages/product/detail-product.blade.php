@@ -33,7 +33,7 @@
         <div class="container product-details">
             <div class="row">
               <div class="col-md-6">
-                <img src="{{ URL::asset('images/'. $detail->image)}}" alt="Product Image" class="product-image-container product-image">
+                <img src="{{ URL::asset('images/'. $detail->image)}}" alt="{{$detail->tittle}}" class="product-image-container product-image">
               </div>
               <div class="col-md-6">
                 <h2>{{$detail->tittle}}</h2>
@@ -42,7 +42,10 @@
                 @endif
                 <p>{{$detail->description}}</p>
                 <h4>{{$detail->new_price}} VNĐ</h4>
+                <form action="{{ route('cart.add', ['id' => $detail->id]) }}" method="POST">
+                    @csrf
                 <button class="btn btn-danger">Thêm vào giỏ hàng</button>
+                </form>
                 <div class="content">
                     <p>Mèo từ 1-6 tuổi cần có nhiều thời gian vui chơi và chế độ ăn uống cân bằng để luôn giữ được vóc dáng cân đối, khỏe mạnh. Mèo là loài ăn thịt trong khi con người là loài ăn tạp, vì vậy nhu cầu protein của mèo cao gấp 2 lần của chúng ta. Mèo cũng cần 41 dưỡng chất thiết yếu để có sức khỏe tối ưu. Hiểu rõ nhu cầu dinh dưỡng của mèo, WHISKAS luôn thiết kế các sản phẩm với công thức đặc biệt để mang lại hệ dưỡng chất toàn diện và cân bằng.
 
@@ -97,7 +100,10 @@
                                     <p class="card-text text-danger" style="font-weight:bolder;font-size:18px;">
                                         75,000 vnđ</p>
                                 </div>
-                                <div class="col"><button class="btn btn-danger">Giỏ hàng</button></div>
+                                <div class="col"><form action="{{ route('cart.add', ['id' => $cu->id]) }}" method="POST">
+                                    @csrf
+                                <button class="btn btn-danger">Giỏ hàng</button>
+                                </form></div>
                             </div>
 
 

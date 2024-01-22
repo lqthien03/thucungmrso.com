@@ -1,11 +1,12 @@
 <?php
-
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\SearchController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ContactController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,11 +18,11 @@ use App\Http\Controllers\ProductController;
 |
 */
 
-Route::get('/', [PageController::class, 'index']);
+Route::get('/', [PageController::class, 'index'])->name('home');
 Route::get('/index', function () {
     return view('index');
 });
-Route::get('/home', [PageController::class, 'index'])->name('pages.home');
+// Route::get('/home', [PageController::class, 'index'])->name('pages.home');
 
 
 Route::get('/search', [SearchController::class,'search'])->name('products.search');
@@ -39,9 +40,20 @@ Route::get('paymentpolicy', [PageController::class, 'paymentpolicy']);
 Route::get('san-pham', [PageController::class,'product']);
 Route::get('category1/{id}', [PageController::class, 'category1']);
 Route::get('category2/{id}', [PageController::class, 'category2']);
+Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [AuthController::class, 'login']);
+Route::middleware(['auth'])->group(function () {
+    Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
 
-Route::post('/add-to-cart/{id}', [CartController::class, 'addToCart'])->middleware(['auth', 'verified'])->name('cart.add');
+    Route::post('/add-to-cart/{id}', [CartController::class,'addtoCart'])->name('cart.add');
+});
+Route::post('/payment', [CartController::class, 'payment'])->name('cart.payment');
+// routes/web.php
+Route::post('/update-cart-item', 'CartController@updateCartItem');
 
+Route::get('/remove-from-cart/{productId}', [CartController::class, 'removeFromCart'])->name('removeFromCart');
+Route::post('/submit-contact', [ContactController::class, 'store'])->name('contact.store');
+Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
-Route::get('cart', [CartController::class, 'index'])->middleware(['auth', 'verified'])->name('cart');
 Route::get('{link}', [ProductController::class, 'detail']);
+

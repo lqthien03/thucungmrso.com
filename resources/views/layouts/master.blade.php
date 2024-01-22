@@ -5,8 +5,9 @@
     {{-- <!-- Basehref -->
 <base href="https://thucungmrso.com/" /> --}}
     <!-- Basehref -->
-    <base href="http://127.0.0.1:8000/" />
+    <base href="http://thucungmrso.com.test/" />
     <meta charset="UTF-8">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shop thú cưng Mr Sọ | Chuyên thức ăn, thuốc, phụ kiện dành thú cưng |</title>
@@ -60,6 +61,8 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ URL::asset('css/app.css')}}">
+
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
         crossorigin="anonymous">
         <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />

@@ -13,10 +13,11 @@ return new class extends Migration
     {
         Schema::create('cart_items', function (Blueprint $table) {
         $table->id();
-        $table->unsignedBigInteger('cart_id');
+        $table->unsignedBigInteger('cart_id')->nullable();
         $table->unsignedBigInteger('product_id'); // ID sản phẩm liên kết
-        $table->unsignedBigInteger('user_id'); 
-        $table->integer('quantity');
+        $table->unsignedBigInteger('user_id');
+        $table->integer('quantity')->default(1);
+        $table->boolean('paid')->default(false);
         // Thêm các cột khác nếu cần
         $table->timestamps();
         $table->foreign('cart_id')->references('id')->on('carts')->onDelete('cascade');

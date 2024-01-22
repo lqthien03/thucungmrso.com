@@ -13,6 +13,7 @@
         <div class="container-fluid ">
             <div class="row justify-content-center">
                 <!-- Card Sản phẩm 1 -->
+                @if(isset($product ))
                 @foreach($product as $pro)
                 <div class="col-md-2 criteria">
                     <div class="card">
@@ -35,7 +36,10 @@
                                     <p class="card-text text-danger" style="font-weight:bolder;font-size:18px;">
                                         75,000 vnđ</p>
                                 </div>
-                                <div class="col"><button class="btn btn-danger">Giỏ hàng</button></div>
+                                <div class="col"><form action="{{ route('cart.add', ['id' => $pro->id]) }}" method="POST">
+                                    @csrf
+                                <button class="btn btn-danger">Giỏ hàng</button>
+                                </form></div>
                             </div>
 
 
@@ -43,8 +47,9 @@
                     </div>
                 </div>
                 @endforeach
-
-
+                @else
+                    <p>Không tìm thấy sản phẩm!</p>
+                @endif
 
                 <!-- Thêm các card sản phẩm khác tương tự -->
             </div>

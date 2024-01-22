@@ -76,7 +76,12 @@
                                     <p class="card-text text-danger" style="font-weight:bolder;font-size:18px;">
                                         75,000 vnđ</p>
                                 </div>
-                                <div class="col"><button class="btn btn-danger">Giỏ hàng</button></div>
+                                <div class="col">
+                                    <form action="{{ route('cart.add', ['id' => $pro->id]) }}" method="POST">
+                                        @csrf
+                                    <button class="btn btn-danger">Giỏ hàng</button>
+                                    </form>
+                                </div>
                             </div>
 
 
@@ -114,7 +119,10 @@
                                     <p class="card-text text-danger" style="font-weight:bolder;font-size:18px;">
                                         75,000 vnđ</p>
                                 </div>
-                                <div class="col"><button class="btn btn-danger">Giỏ hàng</button></div>
+                                <div class="col"><form action="{{ route('cart.add', ['id' => $pro->id]) }}" method="POST">
+                                    @csrf
+                                <button class="btn btn-danger">Giỏ hàng</button>
+                                </form></div>
                             </div>
 
 
@@ -191,7 +199,10 @@
                                         <p class="card-text text-danger" style="font-weight:bolder;font-size:18px;">
                                             75,000 vnđ</p>
                                     </div>
-                                    <div class="col"><button class="btn btn-danger">Giỏ hàng</button></div>
+                                    <div class="col"><form action="{{ route('cart.add', ['id' => $pro->id]) }}" method="POST">
+                                        @csrf
+                                    <button class="btn btn-danger">Giỏ hàng</button>
+                                    </form></div>
                                 </div>
 
 
@@ -257,7 +268,10 @@
                                         <p class="card-text text-danger" style="font-weight:bolder;font-size:18px;">
                                             75,000 vnđ</p>
                                     </div>
-                                    <div class="col"><button class="btn btn-danger">Giỏ hàng</button></div>
+                                    <div class="col"><form action="{{ route('cart.add', ['id' => $pro->id]) }}" method="POST">
+                                        @csrf
+                                    <button class="btn btn-danger">Giỏ hàng</button>
+                                    </form></div>
                                 </div>
 
 
@@ -322,7 +336,10 @@
                                                 <p class="card-text text-danger" style="font-weight:bolder;font-size:18px;">
                                                     75,000 vnđ</p>
                                             </div>
-                                            <div class="col"><button class="btn btn-danger">Giỏ hàng</button></div>
+                                            <div class="col"><form action="{{ route('cart.add', ['id' => $pro->id]) }}" method="POST">
+                                                @csrf
+                                            <button class="btn btn-danger">Giỏ hàng</button>
+                                            </form></div>
                                         </div>
 
 
@@ -405,7 +422,10 @@
                                         <p class="card-text text-danger" style="font-weight:bolder;font-size:18px;">
                                             75,000 vnđ</p>
                                     </div>
-                                    <div class="col"><button class="btn btn-danger">Giỏ hàng</button></div>
+                                    <div class="col"><form action="{{ route('cart.add', ['id' => $pro->id]) }}" method="POST">
+                                        @csrf
+                                    <button class="btn btn-danger">Giỏ hàng</button>
+                                    </form></div>
                                 </div>
 
 
@@ -463,7 +483,10 @@
                                     <p class="card-text text-danger" style="font-weight:bolder;font-size:18px;">
                                         {{$ff->new_price}} vnđ</p>
                                 </div>
-                                <div class="col"><button class="btn btn-danger">Giỏ hàng</button></div>
+                                <div class="col"><form action="{{ route('cart.add', ['id' => $pro->id]) }}" method="POST">
+                                    @csrf
+                                <button class="btn btn-danger">Giỏ hàng</button>
+                                </form></div>
                             </div>
 
 
@@ -575,7 +598,7 @@
                         <div class="col-7">
                             <div class="blog-post-content" style="">
                                 <h3>{{$bl->tittle}}</h3>
-                                <p style="overflow: hidden;text-overflow:ellipsis;">{{$bl->description}}</p>
+                                <p style="overflow: hidden;text-overflow:ellipsis;">{{$bl->describe}}</p>
                             </div>
                         </div>
                     </div>

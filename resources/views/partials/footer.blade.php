@@ -105,14 +105,18 @@
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
+
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script type="module" src="{{ URL::asset('js/app.js')}}"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     {{-- <script src="{{ URL::asset('js/auto-generate-schema.js') }}" defer></script> --}}
-
+    <script>
+        $(document).ready(function(){
+            // Hiển thị thông báo và sau đó tự động ẩn sau 2 giây
+            $('#success-alert').fadeIn().delay(2000).fadeOut();
+        });
+    </script>
 <script>
     jQuery(document).ready(function() {
     jQuery('.add-to-cart-btn').on('click', function() {
@@ -126,7 +130,9 @@
                 _token: token
             },
             success: function(response) {
+                alert('Thêm vào giỏ hàng thành công!');
                 console.log(response);
+
             },
             error: function(xhr) {
                 console.log(xhr);
@@ -192,15 +198,15 @@
       breakpoints: {
     // Thiết lập khi chiều rộng màn hình nhỏ hơn hoặc bằng 768px
     0:{
-        slidesPerView: 1,
+        slidesPerView: 2,
         spaceBetween: 0,
     },
     576: {
-      slidesPerView: 1,
+      slidesPerView: 2,
       spaceBetween: 0,
     },
     768:{
-        slidesPerView: 2,
+        slidesPerView: 3,
       spaceBetween: 0,
     },
     1024:{

@@ -15,16 +15,18 @@ return new class extends Migration
             $table->id();
             $table->string('tittle');
             $table->string('link');
-            $table->text('describe');
+            $table->text('description');
             $table->string('content');
             $table->string('image');
             $table->string('brand');
-            $table->string('old_price');
-            $table->string('new_price');
+            $table->float('old_price',10,3);
+            $table->float('new_price',10,3);
             $table->foreignId('category_level1_id')->nullable()->constrained('category_level1s')->cascadeOnDelete();
             $table->foreignId('category_level2_id')->nullable()->constrained('category_level2s')->cascadeOnDelete();
             $table->foreignId('tag_product_id')->nullable()->constrained('tag_products')->cascadeOnDelete();
             $table->foreignId('seo_id')->nullable()->constrained('seos')->cascadeOnDelete();
+            $table->timestamp('created_at')->useCurrent();
+$table->timestamp('updated_at')->useCurrent();
         });
     }
 

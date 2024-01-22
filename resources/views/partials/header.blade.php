@@ -2,7 +2,11 @@
 <style>
 
 </style>
-
+@if(session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
 <div class="container-fluid header-container p-3 justify-content-center ">
     <div class="row flex-row align-center">
         <!-- Logo và Địa chỉ, Liên kết mạng xã hội -->
@@ -96,13 +100,22 @@
                     <div class="col-md-2 row">
                         <div class="col-4 d-flex align-items-center justify-content-center p-0"
                             style="background-color:#DD0000; border-radius:100%;">
-                            <a href="cart">
+                            <a href="/cart">
                             <img src="{{URL::asset('images/icon-shopping.png')}}" class="icon-header img-fluid" alt="icon-shopping">
                             </a>
                         </div>
                         <div class="col">
                             <p style="margin-bottom:0px">Giỏ hàng:</p>
-                            <b>(0)</b>
+                            @if(Auth::check())
+
+                            <b class="text-danger">(
+                                @if(isset($user) && $user->cartItems->count())
+                                    {{ $user->cartItems->count() }}
+                                @endif
+                            )</b>
+                            @else
+                            <div class=""><b class="text-danger">(0)</b></div>
+                            @endif
                         </div>
 
                     </div>
@@ -156,7 +169,7 @@
                         </a>
 
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown1">
-                        @foreach($category_1 as $cat1)
+                        @foreach($category_level1_id as $cat1)
                             <li class="dropdown-submenu">
                                     <a class="dropdown-item dropdown-toggle rounded" href="/category1/{{$cat1->id}}" id="navbarDropdown1-1" role="button"
                                     data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

@@ -24,4 +24,7 @@ class Category_level1 extends Model
     {
         return $this->belongsTo(Seo::class);
     }
+    public function Category1Childrent(){
+        return $this->hasMany(Category_level2::class);
+    }
 }

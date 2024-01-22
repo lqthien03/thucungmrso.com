@@ -23,7 +23,7 @@
             </div>
             <div class="col-md-6" >
                 <img src="{{ asset('images/pets.jpg') }}" alt="Pets" class="img-fluid">
-                <form method="post" action="{{ url('/contact') }}" class="needs-validation" novalidate>
+                <form method="post" action="{{ route('contact.store') }}" class="needs-validation" novalidate>
                     @csrf
 
                     <div class="row">

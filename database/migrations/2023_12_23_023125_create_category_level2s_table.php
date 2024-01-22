@@ -15,9 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('tittle');
             $table->string('link');
-            $table->text('describe');
-            $table->boolean('display');
-            $table->boolean('outstand');
+            $table->text('description');
+            $table->boolean('display')->default(1);
+            $table->boolean('outstand')->default(1);
             $table->foreignId('category_level1_id')->nullable()->constrained('category_level1s')->cascadeOnDelete();
             $table->foreignId('seo_id')->nullable()->constrained('seos')->cascadeOnDelete();
         });

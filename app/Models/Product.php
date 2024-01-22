@@ -48,6 +48,9 @@ class Product extends Model
     }
     public function category2()
     {
-        return $this->belongsTo(Category_2::class, 'category_2_id');
+        return $this->belongsTo(Category_level2::class, 'category_level2_id');
+    }
+    public function productcart(){
+        return $this->hasMany(Cart_Item::class);
     }
 }

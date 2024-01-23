@@ -6,7 +6,7 @@ use App\Mail\OrderConfirmation;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Cart;
-use App\Models\Cart_Items;
+use App\Models\Cart_Item;
 use App\Models\Cart_Product;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Category_level1;
@@ -160,11 +160,14 @@ public function payment(Request $request)
 
 public function removeFromCart($productId)
 {
-    Cart::remove($productId);
+    $cart = new Cart_Item();
+    $removed = $cart->remove($productId);
 
-    // Thực hiện các xử lý khác (nếu cần)
+    if ($removed) {
+        return redirect()->back()->with('success', 'Sản phẩm đã được xóa khỏi giỏ hàng.');
+    }
 
-    return redirect()->back();
+    return redirect()->back()->with('error', 'Không tìm thấy sản phẩm trong giỏ hàng.');
 }
 public function updateCartItem(Request $request)
 {

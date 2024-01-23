@@ -28,5 +28,15 @@ class Cart_Item extends Model
     public function CartChildrent(){
         return $this->belongsTo(Product::class, 'product_id', 'id');
     }
+    public function remove($productId){
+        $item = $this->where('user_id', auth()->id())
+        ->where('product_id', $productId)
+        ->first();
 
+        if($item){
+            $item->delete();
+            return true;
+        }
+        return false;
+    }
 }
